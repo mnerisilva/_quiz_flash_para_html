@@ -34,7 +34,7 @@ body {
     position: fixed;
 }
 
-.conteudo-atividade {
+.conteudo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,11 +82,43 @@ body {
     font-size: 1.2em;
 }
 
+.questao {
+    font-size: 1.2em;
+}
+
+.questao-1 {
+    transition: opacity 1s;
+}
+
+
 .esconde {
     transition: opacity 1s;
     opacity: 0;
 }
 
-.oculta {
+
+.retira {
     display: none !important;
 }
+
+.questao1-enunciado {
+    min-width: 500px;
+    max-width: 900px;
+    padding: 2em 0;
+}
+
+.op {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: .6em 0;
+}
+
+.op .texto {
+    width: 70%;
+}
+
+.op .select {
+    margin-left: 2em;
+}
+
