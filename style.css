@@ -28,7 +28,7 @@ body {
     display: flex;
     justify-content:left;
     align-items: center;
-    background-color: rgb(49, 168, 236);
+    background-color: rgb(34 82 109);
     width: inherit;
     height: 5em;
     position: fixed;
@@ -40,7 +40,7 @@ body {
     align-items: center;
     height: 100%;
     width: 100%;
-    background-color: khaki;
+    background-color: #fff;
 
 }
 
@@ -48,7 +48,7 @@ body {
     display: flex;
     justify-content:flex-end;
     align-items:center;
-    background-color: rgb(49, 168, 236);
+    background-color: rgb(34 82 109);
     width: 100%;
     height: 5em;
     bottom: 50px;
