@@ -8,11 +8,11 @@ let tela = 1;
 console.log(tela);
 
 botao_proxima.addEventListener('click', function(event){
-    tela += 1;
+    tela = tela + 1;
     console.log(event.target.name)
     console.log(tela);
-    if (tela == 2){
-        
+    if (tela < 2){
+        console.log('tela menos que 2');
     }else{
         mensagem_abertura.classList.add('esconde');
         setInterval(function(){
