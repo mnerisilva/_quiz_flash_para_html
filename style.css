@@ -9,6 +9,37 @@ body {
     background-color: #CB9966!important;;
 }
 
+.container-quiz {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-popup-mensagens {
+    transition: opacity .5s;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(129, 125, 125, 0.3);
+    z-index: 5;
+}
+
+.janela-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 30em;
+    height: 15em;
+    border: solid thin #CB9966;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 6;
+}
+
 
 .quiz-atividade-1 {
     width: 98%;
@@ -91,15 +122,6 @@ body {
 }
 
 
-.esconde {
-    transition: opacity 1s;
-    opacity: 0;
-}
-
-
-.retira {
-    display: none !important;
-}
 
 .questao1-enunciado {
     min-width: 500px;
@@ -122,3 +144,13 @@ body {
     margin-left: 2em;
 }
 
+
+.esconde {
+    transition: opacity 1s;
+    opacity: 0;
+}
+
+
+.retira {
+    display: none !important;
+}
