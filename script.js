@@ -50,8 +50,10 @@ botao_proxima.addEventListener('click', function(event){
             setTimeout(function(){
                 container_popup_mensagens.classList.remove('esconde');
             },.100);
+        } else {
+            console.log('Valores escolhidos: '+retornaValorOpcoesEscolhidas());
         }
-        console.log('Status do preenchimento: '+verificaSeFoiPreenchido(atividade));
+        //console.log('Status do preenchimento: '+verificaSeFoiPreenchido(atividade));
     }
 });
 
@@ -73,8 +75,6 @@ function verificaSeFoiPreenchido(_numQuestao){
     let numeroDeOpcoes = nodeListPreenchidos.length;
     let contador = 1;
     for (var indiceDaOpcao of nodeListPreenchidos) {
-        //escolhidas[]
-        //console.log(indiceDaOpcao.value);
         valoresEscolhidos[contador] = indiceDaOpcao.value;
         contador = contador + 1;
       }
@@ -84,5 +84,13 @@ function verificaSeFoiPreenchido(_numQuestao){
 }
 
 function retornaValorOpcoesEscolhidas(){
-    return true;
+    const valoresEscolhidos = [];
+    const nodeListPreenchidos = document.querySelectorAll('.questao-1 .opcoes .select select')
+    let numeroDeOpcoes = nodeListPreenchidos.length;
+    let contador = 1;
+    for (var indiceDaOpcao of nodeListPreenchidos) {
+        valoresEscolhidos[contador] = indiceDaOpcao.value;
+        contador = contador + 1;
+      }
+    return valoresEscolhidos;
 }
