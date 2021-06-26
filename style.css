@@ -30,7 +30,8 @@ body {
 
 .janela-popup {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     position: absolute;
     width: 30em;
@@ -40,6 +41,21 @@ body {
     z-index: 6;
 }
 
+.cabecalho-popup {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    margin-right: 1em;
+}
+
+.fecha-popup {
+    border: solid thin #ccc;
+    text-decoration: none;
+    padding: .2em;
+    margin-top: .3em;
+    border: 0;
+}
 
 .quiz-atividade-1 {
     width: 98%;

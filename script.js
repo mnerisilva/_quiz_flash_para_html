@@ -19,6 +19,10 @@ const gabarito6 = op6.querySelector('.select select').dataset.gabarito;
 
 const container_popup_mensagens = document.querySelector('.container-popup-mensagens');
 const janela_popup = document.querySelector('.janela-popup');
+const cabecalho_popup = janela_popup.querySelector('.cabecalho-popup');
+const conteudo_popup = janela_popup.querySelector('.conteudo-popup');
+const rodape_popup = janela_popup.querySelector('.rodape-popup');
+const fecha_popup = janela_popup.querySelector('.fecha-popup');
 
 let tela = 1;
 let atividade;
@@ -40,13 +44,24 @@ botao_proxima.addEventListener('click', function(event){
         atividade = 1;
         if(!verificaSeFoiPreenchido(atividade)){
             container_popup_mensagens.classList.remove('retira');
-            janela_popup.innerHTML = '<h3>Você precisa responder à questão!!!</h3';
+            conteudo_popup.innerHTML = '<h3>Você precisa responder à questão!!!</h3';
+            
             setTimeout(function(){
                 container_popup_mensagens.classList.remove('esconde');
             },.100);
         }
         console.log('Status do preenchimento: '+verificaSeFoiPreenchido(atividade));
     }
+});
+
+
+
+fecha_popup.addEventListener('click', function(event){
+    event.preventDefault();
+    container_popup_mensagens.classList.add('esconde');
+    setTimeout(function(){
+        container_popup_mensagens.classList.add('retira');
+    },1000);
 });
 
 
