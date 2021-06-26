@@ -1,5 +1,6 @@
-const botao_proxima = document.querySelector(".botao-proxima");
+
 const mensagem_abertura = document.querySelector('.mensagem-abertura');
+const botao_proxima = document.querySelector(".botao-proxima");
 const questao1 = document.querySelector('.questao-1');
 const botao = document.querySelector('.botao');
 const op1 = document.querySelector('.op1');
@@ -25,7 +26,7 @@ const rodape_popup = janela_popup.querySelector('.rodape-popup');
 const fecha_popup = janela_popup.querySelector('.fecha-popup');
 
 let tela = 1;
-let atividade;
+let questao;
 
 let statusPreenchimento;
 botao_proxima.addEventListener('click', function(event){
@@ -41,10 +42,10 @@ botao_proxima.addEventListener('click', function(event){
         },1500);
         tela = tela + 1;
     }else if(tela == 2) {
-        atividade = 1;
-        if(!verificaSeFoiPreenchido(atividade)){
+        questao = 1;
+        if(!verificaSeFoiPreenchido(questao)){
             container_popup_mensagens.classList.remove('retira');
-            conteudo_popup.innerHTML = '<h3>Você precisa responder à questão!!!</h3';
+            conteudo_popup.innerHTML = '<h3>Você precisa responder à todas as questões!!!</h3';
             
             setTimeout(function(){
                 container_popup_mensagens.classList.remove('esconde');
