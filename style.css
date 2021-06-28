@@ -121,10 +121,11 @@ body {
 
 
 .feedback-inline {
-    border: solid thin red;
+    /*border: solid thin red;*/
     height: 1.4em;
     width: 19em;
     margin-left: 1em;
+    user-select: none;
 }
 
 .botao-proxima {

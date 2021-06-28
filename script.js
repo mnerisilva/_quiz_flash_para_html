@@ -10,12 +10,14 @@ const op4 = document.querySelector('.op4');
 const op5 = document.querySelector('.op5');
 const op6 = document.querySelector('.op6');
 
-const gabarito1 = op1.querySelector('.select select').dataset.gabarito;
+/*const gabarito1 = op1.querySelector('.select select').dataset.gabarito;
 const gabarito2 = op2.querySelector('.select select').dataset.gabarito;
 const gabarito3 = op3.querySelector('.select select').dataset.gabarito;
 const gabarito4 = op4.querySelector('.select select').dataset.gabarito;
 const gabarito5 = op5.querySelector('.select select').dataset.gabarito;
-const gabarito6 = op6.querySelector('.select select').dataset.gabarito;
+const gabarito6 = op6.querySelector('.select select').dataset.gabarito;*/
+
+const gabarito = ['','Pousada', 'Resort', 'Hotel', 'Albergue', 'Navio de Cruzeiro', 'Apart-Hotel'];
 
 
 const container_popup_mensagens = document.querySelector('.container-popup-mensagens');
@@ -24,6 +26,12 @@ const cabecalho_popup = janela_popup.querySelector('.cabecalho-popup');
 const conteudo_popup = janela_popup.querySelector('.conteudo-popup');
 const rodape_popup = janela_popup.querySelector('.rodape-popup');
 const fecha_popup = janela_popup.querySelector('.fecha-popup');
+const feedback_inline = questao1.querySelectorAll(".feedback-inline");
+
+document.addEventListener("DOMContentLoaded", function(event){
+    populaFeedbackInLine();
+    escondeFeedbackInLine();
+})
 
 let tela = 1;
 let questao;
@@ -49,11 +57,12 @@ botao_proxima.addEventListener('click', function(event){
             
             setTimeout(function(){
                 container_popup_mensagens.classList.remove('esconde');
+                return true;
             },.100);
         } else {
             console.log('Valores escolhidos: '+retornaValorOpcoesEscolhidas());
+            confereEscolhas()
         }
-        //console.log('Status do preenchimento: '+verificaSeFoiPreenchido(atividade));
     }
 });
 
@@ -74,6 +83,7 @@ function verificaSeFoiPreenchido(_numQuestao){
     const nodeListPreenchidos = document.querySelectorAll('.questao-1 .opcoes .select select')
     let numeroDeOpcoes = nodeListPreenchidos.length;
     let contador = 1;
+    // trocar for por forEach - forEach funciona em nodeList - não funciona em HTMLCollection
     for (var indiceDaOpcao of nodeListPreenchidos) {
         valoresEscolhidos[contador] = indiceDaOpcao.value;
         contador = contador + 1;
@@ -88,9 +98,32 @@ function retornaValorOpcoesEscolhidas(){
     const nodeListPreenchidos = document.querySelectorAll('.questao-1 .opcoes .select select')
     let numeroDeOpcoes = nodeListPreenchidos.length;
     let contador = 1;
+    // trocar for por forEach - forEach funciona em nodeList - não funciona em HTMLCollection
     for (var indiceDaOpcao of nodeListPreenchidos) {
         valoresEscolhidos[contador] = indiceDaOpcao.value;
         contador = contador + 1;
       }
     return valoresEscolhidos;
+}
+
+function populaFeedbackInLine(){
+    // trocar for por forEach - forEach funciona em nodeList - não funciona em HTMLCollection
+    for(let i=0; i < feedback_inline.length; i++){
+        feedback_inline[i].innerText = gabarito[i+1]; 
+    }
+}
+
+function escondeFeedbackInLine(){
+    // trocar for por forEach - forEach funciona em nodeList - não funciona em HTMLCollection
+    for(let i=0; i < feedback_inline.length; i++){
+        feedback_inline[i].classList.add('esconde'); 
+    }
+}
+
+function confereEscolhas(){
+    // trocar for por forEach - forEach funciona em nodeList - não funciona em HTMLCollection
+    //for(let i=0; i < feedback_inline.length; i++){
+        //feedback_inline[i].classList.add('esconde'); 
+   // }
+   console.log('executou função "confereEscolhas"');
 }
