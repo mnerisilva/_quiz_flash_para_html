@@ -63,8 +63,8 @@ botao_proxima.addEventListener('click', function(event){
                 return true;
             },.100);
         } else {
-            console.log('Valores escolhidos: '+retornaValorOpcoesEscolhidas());
-            confereEscolhas()
+            console.log('Gabarito: '+pegaGabarito());
+            console.log('Escolhidas: '+retornaValorOpcoesEscolhidas());
         }
     }
 });
@@ -103,16 +103,13 @@ function verificaSeFoiPreenchido(_numQuestao){
 }
 
 function retornaValorOpcoesEscolhidas(){
-    const valoresEscolhidos = [];
-    const nodeListPreenchidos = document.querySelectorAll('.questao-1 .opcoes .select select')
-    let numeroDeOpcoes = nodeListPreenchidos.length;
-    let contador = 1;
-    // trocar for por forEach - forEach funciona em nodeList - não funciona em HTMLCollection
-    for (var indiceDaOpcao of nodeListPreenchidos) {
-        valoresEscolhidos[contador] = indiceDaOpcao.value;
-        contador = contador + 1;
-      }
-    return valoresEscolhidos;
+    const arrayEscolhas = [];
+    
+    const escolhas = document.querySelectorAll('.op .select select');
+    
+    escolhas.forEach(function(item){arrayEscolhas.push(item.value)});
+    
+    return arrayEscolhas;
 }
 
 function confereEscolhas(){
@@ -130,3 +127,13 @@ fecha_popup.addEventListener('click', function(event){
         container_popup_mensagens.classList.add('retira');
     },1000);
 });
+
+function pegaGabarito(){
+    const arrayGabaritoDataGabarito = [];
+    
+    const gabaritoDataGabarito = document.querySelectorAll('.op .select select');
+    
+    gabaritoDataGabarito.forEach(function(item){arrayGabaritoDataGabarito.push(item.dataset.gabarito)});
+    
+    return arrayGabaritoDataGabarito;    
+}

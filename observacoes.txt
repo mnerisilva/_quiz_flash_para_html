@@ -7,13 +7,13 @@ logico
 
 
 // pegando gabarito /////////////////////////////////////
-let arrayGabaritoDataGabarito = []
+const arrayGabaritoDataGabarito = [];
 
-let gabaritoDataGabarito = document.querySelectorAll('.op .select select')
+const gabaritoDataGabarito = document.querySelectorAll('.op .select select');
 
-gabaritoDataGabarito.forEach(function(item){arrayGabaritoDataGabarito.push(item.dataset.gabarito)})
+gabaritoDataGabarito.forEach(function(item){arrayGabaritoDataGabarito.push(item.dataset.gabarito)});
 
-arrayGabaritoDataGabarito
+return arrayGabaritoDataGabarito;
 
 ////////////////////////////////////////////////////////
 
@@ -22,20 +22,20 @@ arrayGabaritoDataGabarito
 
 
 // pegando escolhas ////////////////////////////////////
-let arrayEscolhas = []
+const arrayEscolhas = [];
 
-let escolhas = document.querySelectorAll('.op .select select')
+const escolhas = document.querySelectorAll('.op .select select');
 
-escolhas.forEach(function(item){arrayEscolhas.push(item.value)})
+escolhas.forEach(function(item){arrayEscolhas.push(item.value)});
 
-arrayEscolhas
+return arrayEscolhas;
 
 ///////////////////////////////////////////////////////
 
 
 
 // comparar e criar array boleano
-let arrayBoleano = []
+const arrayBoleano = []
 
 
 arrayGabaritoDataGabarito.forEach(function(item, index){
