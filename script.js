@@ -17,7 +17,8 @@ const gabarito4 = op4.querySelector('.select select').dataset.gabarito;
 const gabarito5 = op5.querySelector('.select select').dataset.gabarito;
 const gabarito6 = op6.querySelector('.select select').dataset.gabarito;*/
 
-const gabarito = ['','Pousada', 'Resort', 'Hotel', 'Albergue', 'Navio de Cruzeiro', 'Apart-Hotel'];
+const gabarito = ["","4", "3", "1", "6", "5", "2"];
+const gabaritoNomes = ["","Albergue", "Hotel", "Pousada", "Apart-Hotel", "Navio de Cruzeiro", "Resort"];
 
 
 const container_popup_mensagens = document.querySelector('.container-popup-mensagens');
@@ -39,6 +40,7 @@ let questao;
 let statusPreenchimento;
 botao_proxima.addEventListener('click', function(event){
     if (tela == 1){
+        botao_proxima.classList.add('desativa-link');
         mensagem_abertura.classList.add('esconde');
         setInterval(function(){
             mensagem_abertura.classList.add("retira");
@@ -47,6 +49,7 @@ botao_proxima.addEventListener('click', function(event){
         },1500);
         setInterval(function(){
             questao1.classList.remove("esconde");
+            botao_proxima.classList.remove('desativa-link');
         },1500);
         tela = tela + 1;
     }else if(tela == 2) {
@@ -68,14 +71,20 @@ botao_proxima.addEventListener('click', function(event){
 
 
 
-fecha_popup.addEventListener('click', function(event){
-    event.preventDefault();
-    container_popup_mensagens.classList.add('esconde');
-    setTimeout(function(){
-        container_popup_mensagens.classList.add('retira');
-    },1000);
-});
 
+function populaFeedbackInLine(){
+    // trocar for por forEach - forEach funciona em nodeList - não funciona em HTMLCollection
+    for(let i=0; i < feedback_inline.length; i++){
+        feedback_inline[i].innerText = gabarito[i+1]; 
+    }
+}
+
+function escondeFeedbackInLine(){
+    // trocar for por forEach - forEach funciona em nodeList - não funciona em HTMLCollection
+    for(let i=0; i < feedback_inline.length; i++){
+        feedback_inline[i].classList.add('esconde'); 
+    }
+}
 
 function verificaSeFoiPreenchido(_numQuestao){
     const valoresEscolhidos = [];
@@ -106,20 +115,6 @@ function retornaValorOpcoesEscolhidas(){
     return valoresEscolhidos;
 }
 
-function populaFeedbackInLine(){
-    // trocar for por forEach - forEach funciona em nodeList - não funciona em HTMLCollection
-    for(let i=0; i < feedback_inline.length; i++){
-        feedback_inline[i].innerText = gabarito[i+1]; 
-    }
-}
-
-function escondeFeedbackInLine(){
-    // trocar for por forEach - forEach funciona em nodeList - não funciona em HTMLCollection
-    for(let i=0; i < feedback_inline.length; i++){
-        feedback_inline[i].classList.add('esconde'); 
-    }
-}
-
 function confereEscolhas(){
     // trocar for por forEach - forEach funciona em nodeList - não funciona em HTMLCollection
     //for(let i=0; i < feedback_inline.length; i++){
@@ -127,3 +122,11 @@ function confereEscolhas(){
    // }
    console.log('executou função "confereEscolhas"');
 }
+
+fecha_popup.addEventListener('click', function(event){
+    event.preventDefault();
+    container_popup_mensagens.classList.add('esconde');
+    setTimeout(function(){
+        container_popup_mensagens.classList.add('retira');
+    },1000);
+});

@@ -4,3 +4,12 @@ escolhas    = [, "1", "1", "1", "1", "1", "2"];
 resultado
             = [, "F", "F", "T", "F", "F", "T"];
 logico
+
+
+let novoArray_1 = []
+
+let gab = document.querySelectorAll('.op .select select')
+
+gab.forEach(function(item){novoArray_1.push(item.dataset.gabarito)})
+
+novoArray_1
