@@ -6,10 +6,48 @@ resultado
 logico
 
 
-let novoArray_1 = []
+// pegando gabarito /////////////////////////////////////
+let arrayGabaritoDataGabarito = []
 
-let gab = document.querySelectorAll('.op .select select')
+let gabaritoDataGabarito = document.querySelectorAll('.op .select select')
 
-gab.forEach(function(item){novoArray_1.push(item.dataset.gabarito)})
+gabaritoDataGabarito.forEach(function(item){arrayGabaritoDataGabarito.push(item.dataset.gabarito)})
 
-novoArray_1
+arrayGabaritoDataGabarito
+
+////////////////////////////////////////////////////////
+
+
+
+
+
+// pegando escolhas ////////////////////////////////////
+let arrayEscolhas = []
+
+let escolhas = document.querySelectorAll('.op .select select')
+
+escolhas.forEach(function(item){arrayEscolhas.push(item.value)})
+
+arrayEscolhas
+
+///////////////////////////////////////////////////////
+
+
+
+// comparar e criar array boleano
+let arrayBoleano = []
+
+
+arrayGabaritoDataGabarito.forEach(function(item, index){
+        if(item === arrayEscolhas[index]){
+            arrayBoleano.push(true)
+        } else {            
+            arrayBoleano.push(false)
+        }
+})
+
+arrayBoleano
+
+
+
+
