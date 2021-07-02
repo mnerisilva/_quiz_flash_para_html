@@ -52,7 +52,7 @@ botao_proxima.addEventListener('click', function(event){
             botao_proxima.classList.remove('desativa-link');
         },1500);
         tela = tela + 1;
-    }else if(tela == 2) {
+    } else if(tela == 2) {
         questao = 1;
         if(!verificaSeFoiPreenchido(questao)){
             container_popup_mensagens.classList.remove('retira');
@@ -64,7 +64,9 @@ botao_proxima.addEventListener('click', function(event){
             },.100);
         } else {
             console.log('Gabarito: '+pegaGabarito());
-            console.log('Escolhidas: '+retornaValorOpcoesEscolhidas());
+            console.log('Escolhidas: '+pegaEscolhas());
+            console.log('Tabela Verdade: '+montaTabelaVerdade());
+            verificaAcertos();
         }
     }
 });
@@ -102,7 +104,17 @@ function verificaSeFoiPreenchido(_numQuestao){
       return !valoresEscolhidos.includes("0");
 }
 
-function retornaValorOpcoesEscolhidas(){
+function pegaGabarito(){
+    const arrayGabaritoDataGabarito = [];
+    
+    const gabaritoDataGabarito = document.querySelectorAll('.op .select select');
+    
+    gabaritoDataGabarito.forEach(function(item){arrayGabaritoDataGabarito.push(item.dataset.gabarito)});
+    
+    return arrayGabaritoDataGabarito;    
+}
+
+function pegaEscolhas(){
     const arrayEscolhas = [];
     
     const escolhas = document.querySelectorAll('.op .select select');
@@ -120,6 +132,28 @@ function confereEscolhas(){
    console.log('executou função "confereEscolhas"');
 }
 
+function montaTabelaVerdade(){
+    const arrayBoleano = []
+    const arrayGabarito = pegaGabarito();
+    const arrayEscolhas = pegaEscolhas();
+
+
+    arrayGabarito.forEach(function(item, index){
+            if(item === arrayEscolhas[index]){
+                arrayBoleano.push(true)
+            } else {            
+                arrayBoleano.push(false)
+            }
+    })
+    return arrayBoleano;
+}
+
+function verificaAcertos(){
+    const statuSAcertos = montaTabelaVerdade();
+    statuSAcertos.includes(false);
+    console.log('UMA OU MAIS ALTERNATIVAS ESTÃO INCORRETAS.');    
+}
+
 fecha_popup.addEventListener('click', function(event){
     event.preventDefault();
     container_popup_mensagens.classList.add('esconde');
@@ -127,13 +161,3 @@ fecha_popup.addEventListener('click', function(event){
         container_popup_mensagens.classList.add('retira');
     },1000);
 });
-
-function pegaGabarito(){
-    const arrayGabaritoDataGabarito = [];
-    
-    const gabaritoDataGabarito = document.querySelectorAll('.op .select select');
-    
-    gabaritoDataGabarito.forEach(function(item){arrayGabaritoDataGabarito.push(item.dataset.gabarito)});
-    
-    return arrayGabaritoDataGabarito;    
-}
